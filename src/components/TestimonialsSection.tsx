@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
 import { Quote } from "lucide-react";
 
 export const TestimonialsSection: React.FC = () => {

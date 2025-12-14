@@ -1,6 +1,7 @@
 // src/app/page.tsx
 import { AboutSection } from "../components/AboutSection";
 import { EcosystemSection } from "../components/EcosystemSection";
+import { FaqSection } from "../components/FaqSection";
 import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
 import { JourneySection } from "../components/JourneySection";
@@ -8,6 +9,7 @@ import { MethodSection } from "../components/MethodSection";
 import { ServicesSection } from "../components/ServicesSection";
 import { TestimonialsSection } from "../components/TestimonialsSection";
 import { TickerSection } from "../components/TickerSection";
+import { WhatsAppButton } from "../components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -24,7 +26,10 @@ export default function Home() {
         <EcosystemSection />
         <ServicesSection />
         <TestimonialsSection />
+        <FaqSection />
       </main>
+
+      <WhatsAppButton variant="floating" />
     </div>
   );
 }
