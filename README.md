@@ -5,6 +5,7 @@ Uma landing page moderna para a nutricionista Lais, especializada em nutrição 
 ## 🎯 Visão Geral
 
 **Lais Nutri** é uma landing page completa e funcional que apresenta serviços nutricionais com:
+
 - 📱 Fluxo de agendamento intuitivo (serviço → local → data/hora → dados)
 - 💬 Integração direta com WhatsApp para confirmação
 - 🎨 Design moderno com Tailwind CSS e componentes reutilizáveis
@@ -82,6 +83,7 @@ landingpage-lais/
 ## 🔧 Stack Tecnológico
 
 ### Frontend
+
 - **Next.js 16.0.10** - Framework React com SSR e otimizações
 - **React 19.2.1** - UI library
 - **TypeScript 5** - Type safety
@@ -89,14 +91,17 @@ landingpage-lais/
 - **lucide-react** - Ícones SVG
 
 ### Formulários & Validação
+
 - **react-hook-form 7.68.0** - Gerenciamento de formulários eficiente
 - **@hookform/resolvers 5.2.2** - Integração com validadores
 - **zod 4.1.13** - Validação com schemas
 
 ### State Management
+
 - **zustand 5.0.9** - Estado global leve (modais de agendamento e quiz)
 
 ### Utilitários
+
 - **tailwind-merge 3.4.0** - Merge de classes Tailwind
 
 ---
@@ -104,6 +109,7 @@ landingpage-lais/
 ## 🚀 Começando
 
 ### Pré-requisitos
+
 - Node.js 18+ e npm (ou yarn/pnpm)
 - Conhecimento básico de React e TypeScript
 
@@ -162,7 +168,7 @@ O fluxo de agendamento é o coração da aplicação:
         └─ Nome (2+ palavras, sem números)
            Telefone (10-11 dígitos)
            Email (opcional, gmail/hotmail/outlook)
-    
+
     ↓
 [Confirmação] → Link de Google Calendar + WhatsApp
     ↓
@@ -172,12 +178,14 @@ O fluxo de agendamento é o coração da aplicação:
 ### Componentes Principais do Flow
 
 **`useBooking.ts`**
+
 - Hook customizado que gerencia todo o estado do agendamento
 - Usa `useReducer` para lógica complexa
 - Fornece métodos para navegação entre steps
 - Integra com Google Calendar e WhatsApp
 
 **`modalStore.ts`**
+
 - Zustand store para controlar visibilidade de modais
 - Estados: `isBookingOpen`, `isQuizOpen`, `quizResult`
 - Actions: abrir/fechar booking, abrir/fechar quiz, finalizar quiz
@@ -244,30 +252,27 @@ const schema = z.object({
   name: z
     .string()
     .min(2, "Nome deve ter pelo menos 2 caracteres")
-    .refine(
-      (val) => !val.match(/\d/),
-      "Nome não pode conter números"
-    )
+    .refine((val) => !val.match(/\d/), "Nome não pode conter números")
     .refine(
       (val) => val.trim().split(/\s+/).length >= 2,
       "Nome e sobrenome são obrigatórios"
     ),
-  
-  phone: z
-    .string()
-    .regex(/^\d{10,11}$/, "Telefone deve ter 10 ou 11 dígitos"),
-  
+
+  phone: z.string().regex(/^\d{10,11}$/, "Telefone deve ter 10 ou 11 dígitos"),
+
   email: z
     .string()
     .optional()
     .refine(
-      (val) => !val || /^[^@]+@(gmail\.com|hotmail\.com|outlook\.com)$/.test(val),
+      (val) =>
+        !val || /^[^@]+@(gmail\.com|hotmail\.com|outlook\.com)$/.test(val),
       "Email deve ser Gmail, Hotmail ou Outlook"
     ),
 });
 ```
 
 **Validações:**
+
 - ✅ Nome: mínimo 2 caracteres, sem números, nome + sobrenome obrigatório
 - ✅ Telefone: 10-11 dígitos (DDD + número)
 - ✅ Email: opcional, apenas domínios específicos
@@ -278,11 +283,13 @@ const schema = z.object({
 ## 🎨 Design & Styling
 
 ### Paleta de Cores
+
 - **Primary**: Emerald (verde) - `emerald-600`
 - **Secondary**: Stone (cinza/bege) - `stone-900`, `stone-800`
 - **Accents**: Purple, white backgrounds
 
 ### Componentes Tailwind
+
 - Responsivo (mobile-first)
 - Animações suaves (hover, transitions)
 - Acessibilidade (contraste, focus states)
@@ -306,6 +313,7 @@ window.open(
 ```
 
 **Mensagem enviada:**
+
 ```
 Olá! Gostaria de agendar uma consulta.
 Serviço: [Nome do serviço]
@@ -328,6 +336,7 @@ Telefone: [Telefone]
 ## 🧪 Testes (Futuros)
 
 Recomendações:
+
 - Unit tests: `jest` + `@testing-library/react`
 - E2E tests: `playwright` ou `cypress`
 - Validação de formulários: testes de schema zod
@@ -355,12 +364,8 @@ Recomendações:
 
 ## 📈 Melhorias Futuras
 
-### Críticas
-1. **Backend/API**: Persistência de dados de agendamentos
-2. **Autenticação**: Dashboard para pacientes visualizarem histórico
-3. **Admin Panel**: Gerenciamento de agendamentos e conteúdo
-
 ### Médias
+
 1. **Email Notifications**: Confirmações automáticas por email
 2. **Google Calendar Integration**: Sincronização bidireccional
 3. **Analytics**: Rastreamento de conversão e comportamento
@@ -368,6 +373,7 @@ Recomendações:
 5. **Acessibilidade**: WCAG 2.1 AA compliance
 
 ### Baixas
+
 1. **Temas**: Dark mode toggle
 2. **i18n**: Suporte a múltiplos idiomas
 3. **PWA**: Instalação como app
@@ -377,23 +383,16 @@ Recomendações:
 ## 🛠️ Troubleshooting
 
 ### Problema: Modal não abre
+
 **Solução**: Verifique se `useModalStore` está importado corretamente e se a ação está sendo chamada.
 
 ### Problema: Validação não funciona
+
 **Solução**: Certifique-se que o schema Zod está correto e que `resolver` é passado para `useForm`.
 
 ### Problema: WhatsApp não abre
+
 **Solução**: Verifique se o número está no formato correto com código de país (55 para Brasil).
-
----
-
-## 📝 Convenções de Código
-
-- **Nomes de componentes**: PascalCase (`Header.tsx`, `BookingModal.tsx`)
-- **Nomes de funções/hooks**: camelCase (`useBooking`, `formatDateForWhatsApp`)
-- **Constantes**: UPPER_SNAKE_CASE (`COMPANY_NAME`, `WHATSAPP_LINK`)
-- **Pastas**: kebab-case (`quiz/`, `staps/`)
-- **Tipos**: PascalCase com sufixo `Type` ou interface (`ServiceType`)
 
 ---
 
