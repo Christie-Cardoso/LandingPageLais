@@ -1,5 +1,6 @@
 // src/app/page.tsx
 import { AboutSection } from "../components/AboutSection";
+import { EcosystemSection } from "../components/EcosystemSection";
 import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
 import { JourneySection } from "../components/JourneySection";
@@ -18,6 +19,7 @@ export default function Home() {
         <AboutSection />
         <MethodSection />
         <JourneySection />
+        <EcosystemSection />
       </main>
     </div>
   );
