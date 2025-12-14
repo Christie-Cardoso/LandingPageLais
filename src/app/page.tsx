@@ -2,6 +2,7 @@
 import { AboutSection } from "../components/AboutSection";
 import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
+import { MethodSection } from "../components/MethodSection";
 import { TickerSection } from "../components/TickerSection";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        <MethodSection />
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu, X, Leaf, Calendar } from "lucide-react";
 import { useModalStore } from "../store/modalStore";
 
