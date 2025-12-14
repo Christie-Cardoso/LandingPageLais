@@ -2,6 +2,7 @@
 import { AboutSection } from "../components/AboutSection";
 import { EcosystemSection } from "../components/EcosystemSection";
 import { FaqSection } from "../components/FaqSection";
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
 import { JourneySection } from "../components/JourneySection";
@@ -30,6 +31,7 @@ export default function Home() {
       </main>
 
       <WhatsAppButton variant="floating" />
+      <Footer />
     </div>
   );
 }
