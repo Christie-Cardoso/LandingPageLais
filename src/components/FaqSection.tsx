@@ -3,34 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
-
-const FAQ_ITEMS = [
-  {
-    question: "Você aceita plano de saúde?",
-    answer:
-      "Meus atendimentos são particulares para garantir a qualidade e o tempo necessário (1h30) que você merece. Porém, emito recibo detalhado para que você solicite o reembolso junto ao seu convênio. A maioria dos planos reembolsa uma boa parte do valor.",
-  },
-  {
-    question: "A consulta online funciona mesmo?",
-    answer:
-      "Com certeza! A metodologia é a mesma. A única diferença é a bioimpedância, que substituímos por medidas corporais que ensino você a tirar, e análise visual. A consulta é via Google Meet, olho no olho, com a mesma duração e entrega.",
-  },
-  {
-    question: "Terei acesso ao aplicativo?",
-    answer:
-      "Sim! Todos os pacientes (presencial ou online) ganham acesso exclusivo ao aplicativo. Lá você terá seu plano alimentar, lista de compras, chat direto comigo e acesso a conteúdos exclusivos.",
-  },
-  {
-    question: "O retorno está incluso?",
-    answer:
-      "Trabalho com planos de acompanhamento. A consulta avulsa (Primeira Consulta) inclui suporte por 30 dias para ajustes, mas não inclui uma nova consulta de retorno presencial. Para acompanhamento contínuo, temos pacotes com valores especiais.",
-  },
-  {
-    question: "E se eu não gostar da dieta?",
-    answer:
-      "Impossível! Brincadeiras à parte, o plano é montado COM você, na hora. Não entrego nada pronto. Negociamos cada refeição baseada no que você gosta e pode comprar. Se mesmo assim precisar mudar algo, ajustamos na hora pelo WhatsApp.",
-  },
-];
+import { FAQ_ITEMS } from "../lib/constants";
 
 export const FaqSection: React.FC = () => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);

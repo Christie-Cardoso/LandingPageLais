@@ -1,24 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Quote } from "lucide-react";
+import { TESTIMONIALS } from "../lib/constants";
 
 export const TestimonialsSection: React.FC = () => {
-  const testimonials = [
-    {
-      name: "Juliana Paiva",
-      loss: "-8kg",
-      text: "A Lais mudou minha relação com o espelho. O aplicativo é incrível, uso o scanner de rótulos toda vez que vou ao mercado!",
-    },
-    {
-      name: "Roberto Silva",
-      loss: "-12kg",
-      text: "Eu achava que precisava comer só salada. Descobri que posso comer arroz e feijão e emagrecer. O plano é muito prático.",
-    },
-    {
-      name: "Carla Diaz",
-      loss: "Massa Magra",
-      text: "Ganhei 3kg de massa em 2 meses. O treino rendendo muito mais e a disposição lá em cima.",
-    },
-  ];
   return (
     <section id="depoimentos" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -26,7 +10,7 @@ export const TestimonialsSection: React.FC = () => {
           O que dizem meus pacientes
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
+          {TESTIMONIALS.map((t, i) => (
             <div
               key={i}
               className="bg-stone-50 p-8 rounded-2xl relative border border-stone-100"
