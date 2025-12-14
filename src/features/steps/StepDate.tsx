@@ -1,6 +1,6 @@
 import { ChevronLeft, ArrowRight } from "lucide-react";
 import { StepDateProps } from "@/src/lib/types";
-import { getAvailableTimeSlots } from "../../service/calendarService";
+import { getAvailableTimeSlots } from "../../services/CalendarService";
 
 const generateCalendarDays = () => {
   const days = [];

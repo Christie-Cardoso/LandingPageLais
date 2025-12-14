@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Leaf, Calendar } from "lucide-react";
+import { Menu, X, Calendar } from "lucide-react";
 import { useModalStore } from "../store/modalStore";
 
 export const Header: React.FC = () => {
@@ -21,15 +21,12 @@ export const Header: React.FC = () => {
             className="flex items-center gap-2 cursor-pointer group"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="bg-emerald-100 p-2.5 rounded-full group-hover:bg-emerald-200 transition-colors">
-              <Leaf className="text-emerald-700" size={24} />
-            </div>
             <div>
               <h1 className="text-2xl font-serif font-bold text-stone-800 tracking-tight">
-                Lais Nutri
+                Lais Lima
               </h1>
               <p className="text-[10px] text-emerald-600 font-bold tracking-[0.2em] uppercase">
-                Saúde Integrativa
+                Nutricionista
               </p>
             </div>
           </div>

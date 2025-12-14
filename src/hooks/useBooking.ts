@@ -4,7 +4,7 @@ import { useReducer, useEffect } from "react";
 import {
   formatDateForWhatsApp,
   generateGoogleCalendarLink,
-} from "../service/calendarService";
+} from "../services/CalendarService";
 import { type ServiceType, type LocationType } from "../lib/types";
 import { SERVICES, LOCATIONS } from "../lib/constants";
 

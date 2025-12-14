@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { X, Calendar as CalendarIcon, ArrowRight, MapPin } from "lucide-react";
-import { StepService } from "../features/staps/StepService";
-import { StepLocation } from "../features/staps/StepLocation";
-import { StepDate } from "../features/staps/StepDate";
-import { StepForm } from "../features/staps/StepForm";
+import { StepService } from "../features/steps/StepService";
+import { StepLocation } from "../features/steps/StepLocation";
+import { StepDate } from "../features/steps/StepDate";
+import { StepForm } from "../features/steps/StepForm";
 import { useBooking } from "../hooks/useBooking";
 import { BookingModalProps } from "../lib/types";
 

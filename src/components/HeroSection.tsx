@@ -9,7 +9,7 @@ export const HeroSection: React.FC = () => {
     <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-stone-900">
       <Image
         src="/background.png"
-        alt="Background Nutrição"
+        alt="Fundo com elementos de nutrição e bem-estar"
         fill
         className="object-cover object-center opacity-40"
         priority

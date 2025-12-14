@@ -36,9 +36,10 @@ export const StepLocation: React.FC<StepLocationProps> = ({
               <div className="w-32 bg-stone-200 relative">
                 <Image
                   src={loc.image}
-                  alt={loc.name}
+                  alt={`${loc.name} - Unidade de Atendimento em ${loc.city}`}
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 transition-all"
+                  priority={false}
                 />
               </div>
               <div className="flex-1 p-4 flex flex-col justify-center bg-white group-hover:bg-emerald-50/10 transition-colors">
