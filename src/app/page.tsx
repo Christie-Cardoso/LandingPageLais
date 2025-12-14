@@ -1,4 +1,5 @@
 // src/app/page.tsx
+import { AboutSection } from "../components/AboutSection";
 import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
 import { TickerSection } from "../components/TickerSection";
@@ -12,6 +13,7 @@ export default function Home() {
 
       <main>
         <HeroSection />
+        <AboutSection />
       </main>
     </div>
   );
