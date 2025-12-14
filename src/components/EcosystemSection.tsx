@@ -1,6 +1,9 @@
 import { CheckCircle, Smartphone, Zap, Clock } from "lucide-react";
+import { useModalStore } from "../store/modalStore";
 
 export const EcosystemSection: React.FC = () => {
+  const openBookingModal = useModalStore((state) => state.openBookingModal);
+
   const items = [
     {
       icon: <Smartphone size={24} />,
@@ -50,7 +53,10 @@ export const EcosystemSection: React.FC = () => {
             </div>
 
             <div className="pt-4">
-              <button className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-emerald-200 transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
+              <button
+                onClick={openBookingModal}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl cursor-pointer font-bold shadow-lg shadow-emerald-200 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
+              >
                 Quero acesso a tudo isso <CheckCircle size={20} />
               </button>
             </div>

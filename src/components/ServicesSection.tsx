@@ -1,6 +1,9 @@
 import { ArrowRight, CheckCircle, Star } from "lucide-react";
 
+import { useModalStore } from "../store/modalStore";
+
 export const ServicesSection: React.FC = () => {
+  const openBookingModal = useModalStore((state) => state.openBookingModal);
   const features = [
     "Anamnese Metabólica Detalhada",
     "Avaliação por Bioimpedância (Presencial)",
@@ -29,7 +32,7 @@ export const ServicesSection: React.FC = () => {
               ))}
             </ul>
             <button
-              //   onClick={}
+              onClick={openBookingModal}
               className="mt-4 cursor-pointer bg-stone-900 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-stone-800 transition-colors"
             >
               Verificar Disponibilidade <ArrowRight size={18} />

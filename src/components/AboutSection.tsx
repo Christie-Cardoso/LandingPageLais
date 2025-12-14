@@ -9,8 +9,11 @@ import {
   Smartphone,
 } from "lucide-react";
 import Image from "next/image";
+import { useModalStore } from "../store/modalStore";
 
 export const AboutSection: React.FC = () => {
+  const openBookingModal = useModalStore((state) => state.openBookingModal);
+
   return (
     <section id="sobre" className="py-24 bg-stone-50 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-100 rounded-full blur-[100px] opacity-40"></div>
@@ -124,7 +127,7 @@ export const AboutSection: React.FC = () => {
 
             <div className="pt-6">
               <button
-                // onClick={}
+                onClick={openBookingModal}
                 className="text-stone-800 font-bold border-b-2 border-emerald-500 hover:text-emerald-600 transition-colors pb-1 inline-flex items-center gap-2 cursor-pointer"
               >
                 Agendar uma conversa comigo <ArrowRight size={16} />

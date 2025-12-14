@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
 import { ArrowRight, BrainCircuit, ChevronDown } from "lucide-react";
+import { useModalStore } from "../store/modalStore";
 
 export const HeroSection: React.FC = () => {
+  const { openBookingModal, openQuizModal } = useModalStore();
   return (
     <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-stone-900">
       <Image
@@ -39,14 +41,14 @@ export const HeroSection: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button
-              // onClick={}
+              onClick={openBookingModal}
               className="px-8 py-4 cursor-pointer bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-full shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 text-lg"
             >
               Agendar Consulta <ArrowRight size={20} />
             </button>
 
             <button
-              // onClick={}
+              onClick={openQuizModal}
               className="px-8 py-4 cursor-pointer bg-white/10 backdrop-blur hover:bg-white/20 text-white font-bold rounded-full border border-white/20 transition-all flex items-center justify-center gap-2"
             >
               <BrainCircuit size={20} />

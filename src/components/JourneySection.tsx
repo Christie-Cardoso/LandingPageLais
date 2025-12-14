@@ -6,8 +6,10 @@ import {
   Smartphone,
   MessageCircle,
 } from "lucide-react";
+import { useModalStore } from "../store/modalStore";
 
 export const JourneySection: React.FC = () => {
+  const openBookingModal = useModalStore((state) => state.openBookingModal);
   const steps = [
     {
       icon: <Calendar size={24} />,
@@ -73,7 +75,7 @@ export const JourneySection: React.FC = () => {
 
         <div className="mt-16 text-center">
           <button
-            // onClick={}
+            onClick={openBookingModal}
             className="bg-stone-900 cursor-pointer text-white px-8 py-3 rounded-full font-bold shadow-xl hover:bg-stone-800 transition-all flex items-center gap-2 mx-auto"
           >
             Começar Minha Jornada <ArrowRight size={18} />
