@@ -6,6 +6,7 @@ import { HeroSection } from "../components/HeroSection";
 import { JourneySection } from "../components/JourneySection";
 import { MethodSection } from "../components/MethodSection";
 import { ServicesSection } from "../components/ServicesSection";
+import { TestimonialsSection } from "../components/TestimonialsSection";
 import { TickerSection } from "../components/TickerSection";
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
         <JourneySection />
         <EcosystemSection />
         <ServicesSection />
+        <TestimonialsSection />
       </main>
     </div>
   );
