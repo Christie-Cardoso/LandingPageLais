@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import { Menu, X, Leaf, Calendar } from "lucide-react";
-import { useModalStore } from "../store/modalStore";
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const openBookingModal = useModalStore((state) => state.openBookingModal);
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
@@ -62,7 +60,7 @@ export const Header: React.FC = () => {
             </button>
 
             <button
-              onClick={openBookingModal}
+              // onClick={}
               className="flex items-center gap-2 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all px-6 py-2.5 rounded-full shadow-lg hover:shadow-emerald-200 hover:-translate-y-0.5"
             >
               <Calendar size={16} />
@@ -109,11 +107,9 @@ export const Header: React.FC = () => {
 
             <div className="pt-4 border-t border-stone-100">
               <button
-                onClick={() => {
-                  openBookingModal();
-                  setIsMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-center gap-2 text-white bg-emerald-600 font-bold py-4 rounded-xl shadow-md"
+                // onClick={}
+
+                className="w-full flex items-center cursor-pointer justify-center gap-2 text-white bg-emerald-600 font-bold py-4 rounded-xl shadow-md"
               >
                 <Calendar size={20} /> Agendar Agora
               </button>

@@ -74,7 +74,7 @@ export const JourneySection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             // onClick={}
-            className="bg-stone-900 text-white px-8 py-3 rounded-full font-bold shadow-xl hover:bg-stone-800 transition-all flex items-center gap-2 mx-auto"
+            className="bg-stone-900 cursor-pointer text-white px-8 py-3 rounded-full font-bold shadow-xl hover:bg-stone-800 transition-all flex items-center gap-2 mx-auto"
           >
             Começar Minha Jornada <ArrowRight size={18} />
           </button>
