@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import { X, Calendar as CalendarIcon, ArrowRight, MapPin } from "lucide-react";
 import { StepService } from "../features/steps/StepService";
 import { StepLocation } from "../features/steps/StepLocation";
@@ -7,6 +7,13 @@ import { StepDate } from "../features/steps/StepDate";
 import { StepForm } from "../features/steps/StepForm";
 import { useBooking } from "../hooks/useBooking";
 import { BookingModalProps } from "../lib/types";
+import {
+  trackBookingModalOpen,
+  trackServiceSelected,
+  trackLocationSelected,
+  trackDateTimeSelected,
+  trackBookingConversion,
+} from "../lib/analytics";
 
 export const BookingModal: React.FC<BookingModalProps> = ({
   isOpen,
@@ -22,12 +29,55 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     setName,
     setPhone,
     setEmail,
-    handleServiceSelect,
+    handleServiceSelect: originalHandleServiceSelect,
     handleBack,
-    handleFinish,
+    handleFinish: originalHandleFinish,
     SERVICES,
     LOCATIONS,
   } = useBooking({ initialPrefilledNotes: prefilledNotes, onClose });
+
+  // Rastrear abertura do modal
+  useEffect(() => {
+    if (isOpen) {
+      trackBookingModalOpen("booking_modal");
+    }
+  }, [isOpen]);
+
+  // Wrapper para rastrear seleção de serviço
+  const handleServiceSelect = (service: typeof SERVICES[0]) => {
+    trackServiceSelected(service.id, service.title);
+    originalHandleServiceSelect(service);
+  };
+
+  // Wrapper para rastrear seleção de local
+  const handleLocationSelectWithTracking = (location: typeof LOCATIONS[0]) => {
+    trackLocationSelected(location.id, location.name);
+    setSelectedLocation(location);
+    setStep("calendar");
+  };
+
+  // Wrapper para rastrear seleção de data/hora
+  const handleDateTimeSelectWithTracking = () => {
+    if (state.selectedDate && state.selectedTime) {
+      trackDateTimeSelected(
+        state.selectedDate.toISOString().split("T")[0],
+        state.selectedTime
+      );
+      setStep("details");
+    }
+  };
+
+  // Wrapper para rastrear conversão
+  const handleFinishWithTracking = () => {
+    trackBookingConversion({
+      name: state.name,
+      phone: state.phone,
+      service: state.selectedService.title,
+      location: state.selectedLocation.name,
+      date: state.selectedDate?.toISOString() || "",
+    });
+    originalHandleFinish();
+  };
 
   const {
     step,
@@ -174,7 +224,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             {step === "location" && (
               <StepLocation
                 selectedLocation={selectedLocation}
-                setSelectedLocation={setSelectedLocation}
+                setSelectedLocation={handleLocationSelectWithTracking}
                 setStep={(s) => setStep(s)}
                 handleBack={handleBack}
                 LOCATIONS={LOCATIONS}
@@ -187,7 +237,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 selectedTime={selectedTime}
                 setSelectedDate={setSelectedDate}
                 setSelectedTime={setSelectedTime}
-                setStep={(s) => setStep(s)}
+                setStep={setStep}
                 handleBack={handleBack}
               />
             )}
@@ -201,7 +251,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 setPhone={setPhone}
                 setEmail={setEmail}
                 handleBack={handleBack}
-                handleFinish={handleFinish}
+                handleFinish={handleFinishWithTracking}
               />
             )}
           </div>

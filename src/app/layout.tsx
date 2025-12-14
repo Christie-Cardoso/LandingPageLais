@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist } from "next/font/google";
+import { ConsentBannerWrapper } from "../components/ConsentBannerWrapper";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -137,9 +139,37 @@ export default function RootLayout({
         />
 
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+        {/* Google Analytics 4 - Manual Installation */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        />
+        <Script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              // Default consent mode - LGPD compliance
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied'
+              });
+              
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            `,
+          }}
+        />
       </head>
-      <body className={`${geistSans.variable} antialiased`} suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} antialiased`}
+        suppressHydrationWarning
+      >
         {children}
+        <ConsentBannerWrapper />
       </body>
     </html>
   );
