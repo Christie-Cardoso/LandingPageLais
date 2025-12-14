@@ -2,6 +2,7 @@
 import { AboutSection } from "../components/AboutSection";
 import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
+import { JourneySection } from "../components/JourneySection";
 import { MethodSection } from "../components/MethodSection";
 import { TickerSection } from "../components/TickerSection";
 
@@ -16,6 +17,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <MethodSection />
+        <JourneySection />
       </main>
     </div>
   );
